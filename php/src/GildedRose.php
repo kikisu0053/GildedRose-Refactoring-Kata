@@ -22,13 +22,7 @@ final class GildedRose
             if ($item->name === 'Aged Brie') {
                 $item = $this->increaseQuality($item);
             } elseif ($item->name === 'Backstage passes to a TAFKAL80ETC concert') {
-                $item = $this->increaseQuality($item);
-                if ($item->sell_in < 11) {
-                    $item = $this->increaseQuality($item);
-                }
-                if ($item->sell_in < 6) {
-                    $item = $this->increaseQuality($item);
-                }
+                $item = $this->updateQualityBackstage($item);
             } elseif ($item->name === 'Sulfuras, Hand of Ragnaros') {
                 // do nothing
             } else {
@@ -81,6 +75,19 @@ final class GildedRose
     private function decreaseSellIn($item)
     {
         --$item->sell_in;
+        return $item;
+    }
+
+    private function updateQualityBackstage($item)
+    {
+        $item = $this->increaseQuality($item);
+        if ($item->sell_in < 11) {
+            $item = $this->increaseQuality($item);
+        }
+        if ($item->sell_in < 6) {
+            $item = $this->increaseQuality($item);
+        }
+
         return $item;
     }
 }
