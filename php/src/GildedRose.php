@@ -19,20 +19,7 @@ final class GildedRose
     public function updateQuality(): void
     {
         foreach ($this->items as $item) {
-            switch ($item->name) {
-                case 'Sulfuras, Hand of Ragnaros':
-                    $item->updateQuality();
-                    break;
-                case 'Aged Brie':
-                    $item->updateQuality();
-                    break;
-                case 'Backstage passes to a TAFKAL80ETC concert':
-                    $item->updateQuality();
-                    break;
-                default:
-                    $item->updateQuality();
-                    break;
-            }
+            $item->updateQuality();
         }
     }
 }
