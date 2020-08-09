@@ -7,6 +7,7 @@ namespace Tests;
 use GildedRose\GildedRose;
 use GildedRose\Item\AgedBrieItem;
 use GildedRose\Item\BackstagePassesItem;
+use GildedRose\Item\ConjuredItem;
 use GildedRose\Item\NormalItem;
 use GildedRose\Item\SulfurasItem;
 use PHPUnit\Framework\TestCase;
@@ -29,10 +30,8 @@ class GildedRoseTest extends TestCase
     /**
      * @dataProvider providerNormalUpdateQuality
      */
-    public function testNormalUpdateQuality(
-        $data,
-        $expected
-    ): void {
+    public function testNormalUpdateQuality($data, $expected): void
+    {
         // Arrange
         $items = [new NormalItem('foo', $data['sellIn'], $data['quality'])];
 
@@ -48,10 +47,8 @@ class GildedRoseTest extends TestCase
     /**
      * @dataProvider providerAgedBrieUpdateQuality
      */
-    public function testAgedBrieUpdateQuality(
-        $data,
-        $expected
-    ): void {
+    public function testAgedBrieUpdateQuality($data, $expected): void
+    {
         // Arrange
         $items = [new AgedBrieItem('Aged Brie', $data['sellIn'], $data['quality'])];
 
@@ -67,9 +64,8 @@ class GildedRoseTest extends TestCase
     /**
      * @dataProvider providerSulfurasUpdateQuality
      */
-    public function testSulfurasUpdateQuality(
-        $data
-    ): void {
+    public function testSulfurasUpdateQuality($data): void
+    {
         // Arrange
         $items = [new SulfurasItem('Sulfuras, Hand of Ragnaros', $data['sellIn'], $data['quality'])];
 
@@ -85,14 +81,29 @@ class GildedRoseTest extends TestCase
     /**
      * @dataProvider providerBackstagePassesUpdateQuality
      */
-    public function testBackstagePassesUpdateQuality(
-        $data,
-        $expected
-    ): void {
+    public function testBackstagePassesUpdateQuality($data, $expected): void
+    {
         // Arrange
         $items = [
             new BackstagePassesItem('Backstage passes to a TAFKAL80ETC concert', $data['sellIn'], $data['quality']),
         ];
+
+        // Act
+        $gildedRose = new GildedRose($items);
+        $gildedRose->updateQuality();
+
+        // Assert
+        $this->assertSame($expected['sellIn'], $items[0]->getSellIn());
+        $this->assertSame($expected['quality'], $items[0]->getQuality());
+    }
+
+    /**
+     * @dataProvider providerConjuredUpdateQuality
+     */
+    public function testConjuredUpdateQuality($data, $expected): void
+    {
+        // Arrange
+        $items = [new ConjuredItem('Conjured Mana Cake', $data['sellIn'], $data['quality'])];
 
         // Act
         $gildedRose = new GildedRose($items);
