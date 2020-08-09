@@ -8,8 +8,9 @@ final class NormalItem extends Item
 {
     public function updateQuality(): void
     {
-        $this->decreaseQuality();
         $this->decreaseSellIn();
+
+        $this->decreaseQuality();
         if ($this->getSellIn() < 0) {
             $this->decreaseQuality();
         }

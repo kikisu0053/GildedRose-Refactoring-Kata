@@ -8,8 +8,9 @@ final class AgedBrieItem extends Item
 {
     public function updateQuality(): void
     {
-        $this->increaseQuality();
         $this->decreaseSellIn();
+
+        $this->increaseQuality();
         if ($this->getSellIn() < 0) {
             $this->increaseQuality();
         }
