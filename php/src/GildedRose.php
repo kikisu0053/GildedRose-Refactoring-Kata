@@ -39,7 +39,9 @@ final class GildedRose
                 }
             } else {
                 if ($item->quality > 0) {
-                    if ($item->name !== 'Sulfuras, Hand of Ragnaros') {
+                    if ($item->name === 'Sulfuras, Hand of Ragnaros') {
+                        // donothing
+                    } else {
                         $item = $this->decreaseQuality($item);
                     }
                 }
