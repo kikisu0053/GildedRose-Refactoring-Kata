@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace GildedRose;
 
-class Item
+abstract class Item
 {
     /**
      * @var string
@@ -61,4 +61,6 @@ class Item
     {
         return $this->sell_in;
     }
+
+    abstract public function updateQuality();
 }
