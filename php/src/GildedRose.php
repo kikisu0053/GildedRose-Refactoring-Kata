@@ -23,67 +23,38 @@ final class GildedRose
                 case 'Sulfuras, Hand of Ragnaros':
                     break;
                 case 'Aged Brie':
-                    $item = $this->increaseQuality($item);
-                    $item = $this->decreaseSellIn($item);
-                    if ($item->sell_in < 0) {
-                        $item = $this->increaseQuality($item);
+                    $item->increaseQuality();
+                    $item->decreaseSellIn();
+                    if ($item->getSellIn() < 0) {
+                        $item->increaseQuality();
                     }
                     break;
                 case 'Backstage passes to a TAFKAL80ETC concert':
                     $item = $this->updateQualityBackstage($item);
-                    $item = $this->decreaseSellIn($item);
-                    if ($item->sell_in < 0) {
-                        $item = $this->setQualityZero($item);
+                    $item->decreaseSellIn();
+                    if ($item->getSellIn() < 0) {
+                        $item->setQualityZero();
                     }
                     break;
                 default:
-                    $item = $this->decreaseQuality($item);
-                    $item = $this->decreaseSellIn($item);
-                    if ($item->sell_in < 0) {
-                        $item = $this->decreaseQuality($item);
+                    $item->decreaseQuality();
+                    $item->decreaseSellIn();
+                    if ($item->getSellIn() < 0) {
+                        $item->decreaseQuality();
                     }
                     break;
             }
         }
     }
 
-    private function decreaseQuality($item)
-    {
-        if ($item->quality > 0) {
-            --$item->quality;
-        }
-
-        return $item;
-    }
-
-    private function increaseQuality($item)
-    {
-        if ($item->quality < 50) {
-            ++$item->quality;
-        }
-        return $item;
-    }
-
-    private function setQualityZero($item)
-    {
-        $item->quality = 0;
-        return $item;
-    }
-
-    private function decreaseSellIn($item)
-    {
-        --$item->sell_in;
-        return $item;
-    }
-
     private function updateQualityBackstage($item)
     {
-        $item = $this->increaseQuality($item);
-        if ($item->sell_in < 11) {
-            $item = $this->increaseQuality($item);
+        $item->increaseQuality();
+        if ($item->getSellIn() < 11) {
+            $item->increaseQuality();
         }
-        if ($item->sell_in < 6) {
-            $item = $this->increaseQuality($item);
+        if ($item->getSellIn() < 6) {
+            $item->increaseQuality();
         }
 
         return $item;
