@@ -9,17 +9,17 @@ abstract class Item
     /**
      * @var string
      */
-    public $name;
+    protected $name;
 
     /**
      * @var int
      */
-    public $sell_in;
+    protected $sell_in;
 
     /**
      * @var int
      */
-    public $quality;
+    protected $quality;
 
     public function __construct(string $name, int $sell_in, int $quality)
     {
@@ -33,40 +33,55 @@ abstract class Item
         return "{$this->name}, {$this->sell_in}, {$this->quality}";
     }
 
-    public function decreaseQuality(): void
+    public function getName(): string
     {
-        if ($this->quality > 0) {
-            --$this->quality;
-        }
+        return $this->name;
     }
 
-    public function increaseQuality(): void
-    {
-        if ($this->quality < 50) {
-            ++$this->quality;
-        }
-    }
-
-    public function setQualityZero(): void
-    {
-        $this->quality = 0;
-    }
-
-    public function updateSellIn(): void
-    {
-        --$this->sell_in;
-    }
-
-    public function getSellIn()
+    public function getSellIn(): int
     {
         return $this->sell_in;
     }
 
-    public function upgrad()
+    public function getQuality(): int
+    {
+        return $this->quality;
+    }
+
+    public function upgrad(): void
     {
         $this->updateSellIn();
         $this->updateQuality();
     }
 
-    abstract public function updateQuality();
+    protected function setSellIn($sellIn): void
+    {
+        $this->sell_in = $sellIn;
+    }
+
+    protected function setQuality($quality): void
+    {
+        $this->quality = $quality;
+    }
+
+    protected function decreaseQuality(): void
+    {
+        if ($this->getQuality() > 0) {
+            $this->setQuality($this->getQuality() - 1);
+        }
+    }
+
+    protected function increaseQuality(): void
+    {
+        if ($this->getQuality() < 50) {
+            $this->setQuality($this->getQuality() + 1);
+        }
+    }
+
+    protected function updateSellIn(): void
+    {
+        $this->setSellIn($this->getSellIn() - 1);
+    }
+
+    abstract protected function updateQuality();
 }

@@ -6,7 +6,7 @@ namespace GildedRose;
 
 final class NormalItem extends Item
 {
-    public function updateQuality(): void
+    protected function updateQuality(): void
     {
         $this->decreaseQuality();
         if ($this->getSellIn() < 0) {

@@ -6,7 +6,7 @@ namespace GildedRose;
 
 final class BackstagePassesItem extends Item
 {
-    public function updateQuality(): void
+    protected function updateQuality(): void
     {
         $this->increaseQuality();
         if ($this->getSellIn() < 10) {
@@ -16,7 +16,7 @@ final class BackstagePassesItem extends Item
             $this->increaseQuality();
         }
         if ($this->getSellIn() < 0) {
-            $this->setQualityZero();
+            $this->setQuality(0);
         }
     }
 }

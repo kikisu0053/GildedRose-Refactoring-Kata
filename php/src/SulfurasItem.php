@@ -6,13 +6,13 @@ namespace GildedRose;
 
 final class SulfurasItem extends Item
 {
-    public function updateQuality(): void
+    protected function updateQuality(): void
     {
-        // do nothing
+        $this->setQuality($this->getQuality());
     }
 
-    public function updateSellIn(): void
+    protected function updateSellIn(): void
     {
-        // do nothing
+        $this->setSellIn($this->getSellIn());
     }
 }

@@ -6,7 +6,7 @@ namespace GildedRose;
 
 final class AgedBrieItem extends Item
 {
-    public function updateQuality(): void
+    protected function updateQuality(): void
     {
         $this->increaseQuality();
         if ($this->getSellIn() < 0) {

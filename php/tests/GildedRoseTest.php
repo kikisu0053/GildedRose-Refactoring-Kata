@@ -23,7 +23,7 @@ class GildedRoseTest extends TestCase
         $gildedRose->updateQuality();
 
         // Assert
-        $this->assertSame('foo', $items[0]->name);
+        $this->assertSame('foo', $items[0]->getName());
     }
 
     /**
@@ -39,8 +39,8 @@ class GildedRoseTest extends TestCase
         $gildedRose->updateQuality();
 
         // Assert
-        $this->assertSame($expected['sellIn'], $items[0]->sell_in);
-        $this->assertSame($expected['quality'], $items[0]->quality);
+        $this->assertSame($expected['sellIn'], $items[0]->getSellIn());
+        $this->assertSame($expected['quality'], $items[0]->getQuality());
     }
 
     /**
@@ -56,8 +56,8 @@ class GildedRoseTest extends TestCase
         $gildedRose->updateQuality();
 
         // Assert
-        $this->assertSame($expected['sellIn'], $items[0]->sell_in);
-        $this->assertSame($expected['quality'], $items[0]->quality);
+        $this->assertSame($expected['sellIn'], $items[0]->getSellIn());
+        $this->assertSame($expected['quality'], $items[0]->getQuality());
     }
 
     /**
@@ -73,8 +73,8 @@ class GildedRoseTest extends TestCase
         $gildedRose->updateQuality();
 
         // Assert
-        $this->assertSame($data['sellIn'], $items[0]->sell_in);
-        $this->assertSame($data['quality'], $items[0]->quality);
+        $this->assertSame($data['sellIn'], $items[0]->getSellIn());
+        $this->assertSame($data['quality'], $items[0]->getQuality());
     }
 
     /**
@@ -92,8 +92,8 @@ class GildedRoseTest extends TestCase
         $gildedRose->updateQuality();
 
         // Assert
-        $this->assertSame($expected['sellIn'], $items[0]->sell_in);
-        $this->assertSame($expected['quality'], $items[0]->quality);
+        $this->assertSame($expected['sellIn'], $items[0]->getSellIn());
+        $this->assertSame($expected['quality'], $items[0]->getQuality());
     }
 
     public function providerNormalUpdateQuality()
