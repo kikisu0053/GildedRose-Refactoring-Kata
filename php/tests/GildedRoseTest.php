@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Tests;
 
-use GildedRose\AgedBrieItem;
-use GildedRose\BackstagePassesItem;
 use GildedRose\GildedRose;
-use GildedRose\NormalItem;
-use GildedRose\SulfurasItem;
+use GildedRose\Item\AgedBrieItem;
+use GildedRose\Item\BackstagePassesItem;
+use GildedRose\Item\NormalItem;
+use GildedRose\Item\SulfurasItem;
 use PHPUnit\Framework\TestCase;
 
 class GildedRoseTest extends TestCase
@@ -29,8 +29,10 @@ class GildedRoseTest extends TestCase
     /**
      * @dataProvider providerNormalUpdateQuality
      */
-    public function testNormalUpdateQuality($data, $expected): void
-    {
+    public function testNormalUpdateQuality(
+        $data,
+        $expected
+    ): void {
         // Arrange
         $items = [new NormalItem('foo', $data['sellIn'], $data['quality'])];
 
@@ -46,8 +48,10 @@ class GildedRoseTest extends TestCase
     /**
      * @dataProvider providerAgedBrieUpdateQuality
      */
-    public function testAgedBrieUpdateQuality($data, $expected): void
-    {
+    public function testAgedBrieUpdateQuality(
+        $data,
+        $expected
+    ): void {
         // Arrange
         $items = [new AgedBrieItem('Aged Brie', $data['sellIn'], $data['quality'])];
 
@@ -63,8 +67,9 @@ class GildedRoseTest extends TestCase
     /**
      * @dataProvider providerSulfurasUpdateQuality
      */
-    public function testSulfurasUpdateQuality($data): void
-    {
+    public function testSulfurasUpdateQuality(
+        $data
+    ): void {
         // Arrange
         $items = [new SulfurasItem('Sulfuras, Hand of Ragnaros', $data['sellIn'], $data['quality'])];
 
@@ -80,8 +85,10 @@ class GildedRoseTest extends TestCase
     /**
      * @dataProvider providerBackstagePassesUpdateQuality
      */
-    public function testBackstagePassesUpdateQuality($data, $expected): void
-    {
+    public function testBackstagePassesUpdateQuality(
+        $data,
+        $expected
+    ): void {
         // Arrange
         $items = [
             new BackstagePassesItem('Backstage passes to a TAFKAL80ETC concert', $data['sellIn'], $data['quality']),
