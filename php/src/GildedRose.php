@@ -19,32 +19,30 @@ final class GildedRose
     public function updateQuality(): void
     {
         foreach ($this->items as $item) {
-            if ($item->name === 'Sulfuras, Hand of Ragnaros') {
-                continue;
-            }
-
-            if ($item->name === 'Aged Brie') {
-                $item = $this->increaseQuality($item);
-                $item = $this->decreaseSellIn($item);
-                if ($item->sell_in < 0) {
+            switch ($item->name) {
+                case 'Sulfuras, Hand of Ragnaros':
+                    break;
+                case 'Aged Brie':
                     $item = $this->increaseQuality($item);
-                }
-                continue;
-            }
-
-            if ($item->name === 'Backstage passes to a TAFKAL80ETC concert') {
-                $item = $this->updateQualityBackstage($item);
-                $item = $this->decreaseSellIn($item);
-                if ($item->sell_in < 0) {
-                    $item = $this->setQualityZero($item);
-                }
-                continue;
-            }
-
-            $item = $this->decreaseQuality($item);
-            $item = $this->decreaseSellIn($item);
-            if ($item->sell_in < 0) {
-                $item = $this->decreaseQuality($item);
+                    $item = $this->decreaseSellIn($item);
+                    if ($item->sell_in < 0) {
+                        $item = $this->increaseQuality($item);
+                    }
+                    break;
+                case 'Backstage passes to a TAFKAL80ETC concert':
+                    $item = $this->updateQualityBackstage($item);
+                    $item = $this->decreaseSellIn($item);
+                    if ($item->sell_in < 0) {
+                        $item = $this->setQualityZero($item);
+                    }
+                    break;
+                default:
+                    $item = $this->decreaseQuality($item);
+                    $item = $this->decreaseSellIn($item);
+                    if ($item->sell_in < 0) {
+                        $item = $this->decreaseQuality($item);
+                    }
+                    break;
             }
         }
     }
