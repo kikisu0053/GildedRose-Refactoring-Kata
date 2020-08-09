@@ -52,7 +52,7 @@ abstract class Item
         $this->quality = 0;
     }
 
-    public function decreaseSellIn(): void
+    public function updateSellIn(): void
     {
         --$this->sell_in;
     }
@@ -60,6 +60,12 @@ abstract class Item
     public function getSellIn()
     {
         return $this->sell_in;
+    }
+
+    public function upgrad()
+    {
+        $this->updateSellIn();
+        $this->updateQuality();
     }
 
     abstract public function updateQuality();

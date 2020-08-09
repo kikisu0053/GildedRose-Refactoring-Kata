@@ -8,5 +8,11 @@ final class SulfurasItem extends Item
 {
     public function updateQuality(): void
     {
+        // do nothing
+    }
+
+    public function updateSellIn(): void
+    {
+        // do nothing
     }
 }

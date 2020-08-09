@@ -8,8 +8,6 @@ final class BackstagePassesItem extends Item
 {
     public function updateQuality(): void
     {
-        $this->decreaseSellIn();
-
         $this->increaseQuality();
         if ($this->getSellIn() < 10) {
             $this->increaseQuality();
