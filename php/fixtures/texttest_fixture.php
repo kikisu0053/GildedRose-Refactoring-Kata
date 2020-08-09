@@ -3,8 +3,8 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use GildedRose\AgedBrieItem;
+use GildedRose\BackstagePassesItem;
 use GildedRose\GildedRose;
-use GildedRose\Item;
 use GildedRose\NormalItem;
 use GildedRose\SulfurasItem;
 
@@ -16,9 +16,9 @@ $items = array(
     new NormalItem('Elixir of the Mongoose', 5, 7),
     new SulfurasItem('Sulfuras, Hand of Ragnaros', 0, 80),
     new SulfurasItem('Sulfuras, Hand of Ragnaros', -1, 80),
-    new Item('Backstage passes to a TAFKAL80ETC concert', 15, 20),
-    new Item('Backstage passes to a TAFKAL80ETC concert', 10, 49),
-    new Item('Backstage passes to a TAFKAL80ETC concert', 5, 49),
+    new BackstagePassesItem('Backstage passes to a TAFKAL80ETC concert', 15, 20),
+    new BackstagePassesItem('Backstage passes to a TAFKAL80ETC concert', 10, 49),
+    new BackstagePassesItem('Backstage passes to a TAFKAL80ETC concert', 5, 49),
     // this conjured item does not work properly yet
     new NormalItem('Conjured Mana Cake', 3, 6)
 );

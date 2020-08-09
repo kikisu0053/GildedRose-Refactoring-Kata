@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Tests;
 
 use GildedRose\AgedBrieItem;
+use GildedRose\BackstagePassesItem;
 use GildedRose\GildedRose;
-use GildedRose\Item;
 use GildedRose\NormalItem;
 use GildedRose\SulfurasItem;
 use PHPUnit\Framework\TestCase;
@@ -83,7 +83,9 @@ class GildedRoseTest extends TestCase
     public function testBackstagePassesUpdateQuality($data, $expected): void
     {
         // Arrange
-        $items = [new Item('Backstage passes to a TAFKAL80ETC concert', $data['sellIn'], $data['quality'])];
+        $items = [
+            new BackstagePassesItem('Backstage passes to a TAFKAL80ETC concert', $data['sellIn'], $data['quality']),
+        ];
 
         // Act
         $gildedRose = new GildedRose($items);

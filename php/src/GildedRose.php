@@ -27,29 +27,12 @@ final class GildedRose
                     $item->updateQuality();
                     break;
                 case 'Backstage passes to a TAFKAL80ETC concert':
-                    $item = $this->updateQualityBackstage($item);
-                    $item->decreaseSellIn();
-                    if ($item->getSellIn() < 0) {
-                        $item->setQualityZero();
-                    }
+                    $item->updateQuality();
                     break;
                 default:
                     $item->updateQuality();
                     break;
             }
         }
-    }
-
-    private function updateQualityBackstage($item)
-    {
-        $item->increaseQuality();
-        if ($item->getSellIn() < 11) {
-            $item->increaseQuality();
-        }
-        if ($item->getSellIn() < 6) {
-            $item->increaseQuality();
-        }
-
-        return $item;
     }
 }
