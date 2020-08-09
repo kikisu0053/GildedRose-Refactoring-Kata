@@ -24,11 +24,7 @@ final class GildedRose
                     $item->updateQuality();
                     break;
                 case 'Aged Brie':
-                    $item->increaseQuality();
-                    $item->decreaseSellIn();
-                    if ($item->getSellIn() < 0) {
-                        $item->increaseQuality();
-                    }
+                    $item->updateQuality();
                     break;
                 case 'Backstage passes to a TAFKAL80ETC concert':
                     $item = $this->updateQualityBackstage($item);

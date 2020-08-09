@@ -7,5 +7,6 @@ namespace GildedRose;
 final class SulfurasItem extends Item
 {
     public function updateQuality(): void
-    {}
+    {
+    }
 }

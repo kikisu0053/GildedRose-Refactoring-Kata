@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests;
 
+use GildedRose\AgedBrieItem;
 use GildedRose\GildedRose;
 use GildedRose\Item;
 use GildedRose\NormalItem;
@@ -48,7 +49,7 @@ class GildedRoseTest extends TestCase
     public function testAgedBrieUpdateQuality($data, $expected): void
     {
         // Arrange
-        $items = [new Item('Aged Brie', $data['sellIn'], $data['quality'])];
+        $items = [new AgedBrieItem('Aged Brie', $data['sellIn'], $data['quality'])];
 
         // Act
         $gildedRose = new GildedRose($items);

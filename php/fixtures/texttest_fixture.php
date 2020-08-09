@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+use GildedRose\AgedBrieItem;
 use GildedRose\GildedRose;
 use GildedRose\Item;
 use GildedRose\NormalItem;
@@ -11,7 +12,7 @@ echo "OMGHAI!" . PHP_EOL;
 
 $items = array(
     new NormalItem('+5 Dexterity Vest', 10, 20),
-    new Item('Aged Brie', 2, 0),
+    new AgedBrieItem('Aged Brie', 2, 0),
     new NormalItem('Elixir of the Mongoose', 5, 7),
     new SulfurasItem('Sulfuras, Hand of Ragnaros', 0, 80),
     new SulfurasItem('Sulfuras, Hand of Ragnaros', -1, 80),
