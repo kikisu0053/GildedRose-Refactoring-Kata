@@ -7,6 +7,7 @@ namespace Tests;
 use GildedRose\GildedRose;
 use GildedRose\Item;
 use GildedRose\NormalItem;
+use GildedRose\SulfurasItem;
 use PHPUnit\Framework\TestCase;
 
 class GildedRoseTest extends TestCase
@@ -64,7 +65,7 @@ class GildedRoseTest extends TestCase
     public function testSulfurasUpdateQuality($data): void
     {
         // Arrange
-        $items = [new Item('Sulfuras, Hand of Ragnaros', $data['sellIn'], $data['quality'])];
+        $items = [new SulfurasItem('Sulfuras, Hand of Ragnaros', $data['sellIn'], $data['quality'])];
 
         // Act
         $gildedRose = new GildedRose($items);

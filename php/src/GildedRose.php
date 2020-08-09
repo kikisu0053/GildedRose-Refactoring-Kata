@@ -21,6 +21,7 @@ final class GildedRose
         foreach ($this->items as $item) {
             switch ($item->name) {
                 case 'Sulfuras, Hand of Ragnaros':
+                    $item->updateQuality();
                     break;
                 case 'Aged Brie':
                     $item->increaseQuality();
