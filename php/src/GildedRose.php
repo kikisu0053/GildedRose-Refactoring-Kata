@@ -37,11 +37,7 @@ final class GildedRose
                     }
                     break;
                 default:
-                    $item->decreaseQuality();
-                    $item->decreaseSellIn();
-                    if ($item->getSellIn() < 0) {
-                        $item->decreaseQuality();
-                    }
+                    $item->updateQuality();
                     break;
             }
         }

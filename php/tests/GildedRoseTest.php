@@ -6,6 +6,7 @@ namespace Tests;
 
 use GildedRose\GildedRose;
 use GildedRose\Item;
+use GildedRose\NormalItem;
 use PHPUnit\Framework\TestCase;
 
 class GildedRoseTest extends TestCase
@@ -13,7 +14,7 @@ class GildedRoseTest extends TestCase
     public function testFoo(): void
     {
         // Arrange
-        $items = [new Item('foo', 0, 0)];
+        $items = [new NormalItem('foo', 0, 0)];
 
         // Act
         $gildedRose = new GildedRose($items);
@@ -26,14 +27,10 @@ class GildedRoseTest extends TestCase
     /**
      * @dataProvider providerNormalUpdateQuality
      */
-    public function testNormalUpdateQuality(
-        $data,
-        $expected
-    ): void {
+    public function testNormalUpdateQuality($data, $expected): void
+    {
         // Arrange
-        $items = [
-            new Item('foo', $data['sellIn'], $data['quality']),
-        ];
+        $items = [new NormalItem('foo', $data['sellIn'], $data['quality'])];
 
         // Act
         $gildedRose = new GildedRose($items);
@@ -47,14 +44,10 @@ class GildedRoseTest extends TestCase
     /**
      * @dataProvider providerAgedBrieUpdateQuality
      */
-    public function testAgedBrieUpdateQuality(
-        $data,
-        $expected
-    ): void {
+    public function testAgedBrieUpdateQuality($data, $expected): void
+    {
         // Arrange
-        $items = [
-            new Item('Aged Brie', $data['sellIn'], $data['quality']),
-        ];
+        $items = [new Item('Aged Brie', $data['sellIn'], $data['quality'])];
 
         // Act
         $gildedRose = new GildedRose($items);
@@ -68,13 +61,10 @@ class GildedRoseTest extends TestCase
     /**
      * @dataProvider providerSulfurasUpdateQuality
      */
-    public function testSulfurasUpdateQuality(
-        $data
-    ): void {
+    public function testSulfurasUpdateQuality($data): void
+    {
         // Arrange
-        $items = [
-            new Item('Sulfuras, Hand of Ragnaros', $data['sellIn'], $data['quality']),
-        ];
+        $items = [new Item('Sulfuras, Hand of Ragnaros', $data['sellIn'], $data['quality'])];
 
         // Act
         $gildedRose = new GildedRose($items);
@@ -88,35 +78,10 @@ class GildedRoseTest extends TestCase
     /**
      * @dataProvider providerBackstagePassesUpdateQuality
      */
-    public function testBackstagePassesUpdateQuality(
-        $data,
-        $expected
-    ): void {
+    public function testBackstagePassesUpdateQuality($data, $expected): void
+    {
         // Arrange
-        $items = [
-            new Item('Backstage passes to a TAFKAL80ETC concert', $data['sellIn'], $data['quality']),
-        ];
-
-        // Act
-        $gildedRose = new GildedRose($items);
-        $gildedRose->updateQuality();
-
-        // Assert
-        $this->assertSame($expected['sellIn'], $items[0]->sell_in);
-        $this->assertSame($expected['quality'], $items[0]->quality);
-    }
-
-    /**
-     * @dataProvider providerConjuredUpdateQuality
-     */
-    public function testConjuredUpdateQuality(
-        $data,
-        $expected
-    ): void {
-        // Arrange
-        $items = [
-            new Item('Conjured Mana Cake', $data['sellIn'], $data['quality']),
-        ];
+        $items = [new Item('Backstage passes to a TAFKAL80ETC concert', $data['sellIn'], $data['quality'])];
 
         // Act
         $gildedRose = new GildedRose($items);
